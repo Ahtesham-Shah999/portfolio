@@ -6,10 +6,28 @@ import CanvasLoader from "../Loader";
 
 const Computers = () => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
+  
+  useEffect(() => {
+    const mesh = computer.scene;
+    let frame = 0;
+    
+    const animate = () => {
+      frame = requestAnimationFrame(animate);
+      
+      // Add gentle floating movement
+      mesh.position.y = Math.sin(Date.now() * 0.001) * 0.1;
+      // Add subtle rotation
+      mesh.rotation.y += 0.002;
+    };
+    
+    animate();
+    
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   return (
     <mesh>
-      <hemisphereLight intensity={0.15} groundColor="black" />
+      <hemisphereLight intensity={0.15} groundColor="green" />
       <spotLight
         position={[-20, 50, 10]}
         angle={0.12}
@@ -21,9 +39,9 @@ const Computers = () => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={0.75} // Keep scale normal for desktop
-        position={[0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
+        scale={0.35}
+        position={[7, -3, -2.5]}
+        rotation={[0, -0.6, -0.1]}
       />
     </mesh>
   );
@@ -49,7 +67,7 @@ const ComputersCanvas = () => {
   return (
     !isMobile && ( // Hide on mobile screens
       <Canvas
-        frameloop="demand"
+        frameloop="always"
         shadows
         dpr={[1, 2]}
         camera={{ position: [20, 3, 5], fov: 25 }}

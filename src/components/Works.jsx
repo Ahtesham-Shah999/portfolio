@@ -123,7 +123,7 @@ const Works = () => {
   return (
     <>
       <div>
-        <p className={`${styles.sectionSubText}`}>My work</p>
+        <p className={`${styles.sectionSubText}`} style={{color:"red"}}>My work</p>
         <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
       </div>
 

@@ -5,6 +5,7 @@ import {
   creator,
   mobile,
   web,
+  ai,
   github,
   menu,
   close,
@@ -53,7 +54,7 @@ export const navLinks = [
   },
   {
     id: "contact",
-    title: "Contact",
+    title: "Contact Me",
   },
 ];
 
@@ -63,8 +64,8 @@ const services = [
     icon: web,
   },
   {
-    title: "Frontend Developer",
-    icon: mobile,
+    title: "AI/Machine learning",
+    icon: ai,
   },
   {
     title: "Backend Developer",
@@ -127,6 +128,7 @@ const technologies = [
     name: "Node JS",
     icon: nodejs,
   },
+  
   {
     name: "Express Js",
     icon: express,
@@ -172,7 +174,7 @@ const testimonials = [
   {
     testimonial:
       "I thought it was impossible to make a website as beautiful as our product, but Huzaif proved me wrong.",
-    name: "MD Mustaqeem",
+    name: "Usman PLuto",
     designation: "Ecommerce",
     company: "QuickMart",
     image: firstTestimonial,
@@ -197,17 +199,17 @@ const testimonials = [
 
 const projects = [
   {
-    name: "Tekisky Mart",
+    name: "Solace Builders",
     description:
-      "Tekisky Mart is a web-based platform that allows users to search, explore, and purchase a wide range of products from various providers, offering a seamless and efficient shopping experience.",
+      "A construction project management platform where contractors and clients can negotiate terms, create agreements, and manage house construction projects with installment-based payments. Streamlines the entire building process from initial agreement to final payment.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "tailwind",
-        color: "white-text-gradient",
+        name: "CSS5",
+        color: "blue-text-gradient",
       },
       {
         name: "node",
@@ -220,15 +222,15 @@ const projects = [
  
     ],
     image: project2,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://github.com/Ahtesham-Shah999/Zevens_Builders",
   },
   {
-    name: "GearXpert",
+    name: "Devflow",
     description:
-      "GearXpert is your ultimate destination for premium auto parts and accessories, Whether you're an automobile enthusiast or a professional, find everything you need to upgrade, repair.",
+      "A comprehensive development platform similar to GitHub where developers can share code, collaborate on projects, merge codebases, and connect with other programmers. Features include code sharing, version control, and developer hiring capabilities.",
     tags: [
       {
-        name: "react",
+        name: "Nextjs",
         color: "blue-text-gradient",
       },
       {
@@ -236,12 +238,12 @@ const projects = [
         color: "green-text-gradient",
       },
       {
-        name: "Gsap",
+        name: "Firebase",
         color: "pink-text-gradient",
       },
     ],
     image: gearXpert,
-    source_code_link: "https://github.com/",
+    source_code_link: "https://github.com/Ahtesham-Shah999/devoverflow5088",
   },
   {
     name: "GoGroove-Ecommerce",
@@ -266,7 +268,7 @@ const projects = [
       },
     ],
     image: project3,
-    source_code_link: "https://github.com/",
+    source_code_link: "http://github.com/Ahtesham-Shah999/DeployFoodproject",
   },
 ];
 
