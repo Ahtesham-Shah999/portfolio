@@ -34,26 +34,29 @@ const Navbar = () => {
       }`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <Link
-          to="/"
-          className="flex items-center gap-2"
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
-        >
-          <img src={yess} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex items-center">
-            <span className="animated-underline">Ahtesham Shah</span> &nbsp;
-            <a
-              href="https://faizan-bor.github.io/ZEVENZ"
-              target="_blank"
-              className="hover:text-red-600 transition-colors"
-            >
-              <span className="sm:block hidden"> | Zevenz Tech</span>
-            </a>
-          </p>
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/"
+            className="flex items-center gap-2"
+            onClick={() => {
+              setActive("");
+              window.scrollTo(0, 0);
+            }}
+          >
+            <img src={yess} alt="logo" className="w-9 h-9 object-contain" />
+            <p className="text-white text-[18px] font-bold cursor-pointer flex items-center">
+              <span className="animated-underline">Ahtesham Shah</span>
+            </p>
+          </Link>
+          <a
+            href="https://www.zevenz.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white text-[18px] font-bold cursor-pointer flex items-center hover:text-red-600 transition-colors"
+          >
+            <span className="sm:block hidden">| Zevenz</span>
+          </a>
+        </div>
 
         <ul className="list-none hidden sm:flex flex-row gap-10">
           {navLinks.map((nav) => (

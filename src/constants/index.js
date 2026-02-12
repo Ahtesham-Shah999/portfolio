@@ -33,6 +33,13 @@ import {
   firstTestimonial,
   secondTestimonial,
   thirdTestimonial,
+  smart_biztrack,
+  thekadar,
+  devoverflow,
+  restaurant_chatbot,
+  crypto_wallet,
+  zevenz_builder,
+  restaurant_support,
 } from '../assets'
 
 
@@ -64,11 +71,11 @@ const services = [
     icon: web,
   },
   {
-    title: "AI/Machine learning",
+    title: "AI Engineer",
     icon: ai,
   },
   {
-    title: "Backend Developer",
+    title: "Java Developer",
     icon: backend,
   },
   {
@@ -160,7 +167,7 @@ const experiences = [
     company_name: "Tekisky",
     icon: tekisky,
     iconBg: "#383E56",
-    date: "Jan 2023 - present",
+    date: "August 2024 - Present",
     points: [
       "Developing and maintaining web applications using MERN technologies.",
       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -168,107 +175,216 @@ const experiences = [
       "Participating in code reviews and providing constructive feedback to other developers.",
     ],
   },
+  {
+    title: "AI Engineer",
+    company_name: "Zevenz",
+    icon: ai,
+    iconBg: "#E6DEDD",
+    date: "June 2025 - Present",
+    points: [
+      "Specializing in RAG (Retrieval-Augmented Generation) to build context-aware AI systems.",
+      "Developing intelligent AI Chatbots for automated customer support and interaction.",
+      "Implementing custom LLM solutions to solve complex business problems.",
+      "Integrating generative AI technologies into existing web platforms.",
+    ],
+  },
 ];
 
 const testimonials = [
   {
     testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Huzaif proved me wrong.",
-    name: "Usman PLuto",
-    designation: "Ecommerce",
-    company: "QuickMart",
+      "Zevenz transformed our operations. The interface is intuitive, and the real-time tracking has cut our manual work in half. Exceptional quality and support!",
+    name: "Sussan",
+    designation: "General Manager (Fiverr Client)",
+    company: "Al-Madina Supermarket",
     image: firstTestimonial,
   },
   {
     testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Huzaif does.",
-    name: "Abdul Raheman",
-    designation: "Ecommerce Business",
-    company: "justbuyz",
+      "Thekadar helped our team stay organized and on track. It simplified wage calculations and made project tracking super easy.",
+    name: "Alex_worki",
+    designation: "Founder (Fiverr Client)",
+    company: "Builder Base Pvt Ltd",
     image: secondTestimonial,
   },
   {
     testimonial:
-      "After Huzaif optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "James Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
+      "DevOverflow has become our go-to platform for managing projects and finding talent. It's everything a modern development team needs in one place.",
+    name: "Sarah Martinez",
+    designation: "CTO (Fiverr Client)",
+    company: "TechVentures Inc.",
     image: thirdTestimonial,
   },
 ];
 
 const projects = [
   {
-    name: "Solace Builders",
+    name: "Smart BizTrack",
     description:
-      "A construction project management platform where contractors and clients can negotiate terms, create agreements, and manage house construction projects with installment-based payments. Streamlines the entire building process from initial agreement to final payment.",
+      "A comprehensive grocery management platform built for a leading retail company, featuring a modern user interface, robust admin dashboard, and advanced analytics.",
     tags: [
       {
-        name: "react",
+        name: "React",
         color: "blue-text-gradient",
       },
       {
-        name: "CSS5",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "node",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
- 
-    ],
-    image: project2,
-    source_code_link: "https://github.com/Ahtesham-Shah999/Zevens_Builders",
-  },
-  {
-    name: "Devflow",
-    description:
-      "A comprehensive development platform similar to GitHub where developers can share code, collaborate on projects, merge codebases, and connect with other programmers. Features include code sharing, version control, and developer hiring capabilities.",
-    tags: [
-      {
-        name: "Nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "emailJs",
+        name: "Node.js",
         color: "green-text-gradient",
       },
       {
-        name: "Firebase",
+        name: "MongoDB",
         color: "pink-text-gradient",
       },
     ],
-    image: gearXpert,
-    source_code_link: "https://github.com/Ahtesham-Shah999/devoverflow5088",
+    image: smart_biztrack,
+    source_code_link: "https://www.youtube.com/watch?v=sJDBQm9qDvE",
   },
   {
-    name: "GoGroove-Ecommerce",
+    name: "Restaurant Chatbot Support",
     description:
-      "Go-Groove is your ultimate destination for premium products across various categories. Whether you're a savvy shopper or a professional, enhance, and simplify your lifestyle—all in one place!",
+      "n intelligent customer support chatbot designed for restaurants, utilizing Retrieval-Augmented Generation (RAG) to provide accurate answers about menus, ingredients, reservations, and timings.",
     tags: [
       {
-        name: "react",
+        name: "Next-JS",
         color: "blue-text-gradient",
       },
       {
-        name: "express",
-        color: "white-text-gradient",
-      },
-      {
-        name: "node",
+        name: "Python",
         color: "green-text-gradient",
       },
       {
-        name: "mongodb",
-        color: "green-text-gradient",
+        name: "N8N",
+        color: "pink-text-gradient",
       },
     ],
-    image: project3,
-    source_code_link: "http://github.com/Ahtesham-Shah999/DeployFoodproject",
+    image: smart_biztrack,
+    source_code_link: "https://www.youtube.com/watch?v=sJDBQm9qDvE",
+  },
+  {
+    name: "Zevenz Builders",
+    description:
+      "A builder matchmaking platform where clients can easily find and connect with verified Thekedars (contractors) to build their homes. It simplifies project management.",
+    tags: [
+      {
+        name: "Laravel",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "MySQL",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Construction",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: thekadar,
+    source_code_link: "https://www.youtube.com/watch?v=O0vF6-EPRqQ",
+  },
+  {
+    name: "DevOverflow",
+    description:
+      "A comprehensive development platform similar to GitHub, enabling developers to share code, collaborate on projects, manage version control, and explore networking.",
+    tags: [
+      {
+        name: "Next.js",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "MongoDB",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: devoverflow,
+    source_code_link: "https://www.youtube.com/watch?v=GfW-Pi1COQE",
+  },
+  {
+    name: "Le Château AI Chatbot",
+    description:
+      "An intelligent AI-powered chatbot designed to enhance the customer dining experience with seamless communication, instant bookings, and personalized recommendations.",
+    tags: [
+      {
+        name: "RAG",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Python",
+        color: "green-text-gradient",
+      },
+      {
+        name: "LangChain",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: restaurant_chatbot,
+    source_code_link: "https://www.youtube.com/watch?v=crajkEpGJrw",
+  },
+  {
+    name: "Decentralized Wallet",
+    description:
+      "A fully functional decentralized cryptocurrency wallet featuring a custom blockchain, PoW mining, Zakat deduction system, and UTXO-based transactions.",
+    tags: [
+      {
+        name: "Rust",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "React",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Blockchain",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: crypto_wallet,
+    source_code_link: "https://www.youtube.com/watch?v=iFlqo0wJeJk",
+  },
+  {
+    name: "Restaurant Chatbot Support",
+    description:
+      "An intelligent customer support chatbot designed for restaurants, utilizing Retrieval-Augmented Generation (RAG) to provide accurate answers about menus, ingredients, reservations, and timings.",
+    tags: [
+      {
+        name: "Next.js",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Python",
+        color: "green-text-gradient",
+      },
+      {
+        name: "N8N",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: restaurant_support,
+    source_code_link: "https://www.youtube.com/watch?v=sJDBQm9qDvE",
+  },
+  {
+    name: "Zevenz Builders",
+    description:
+      "A builder matchmaking platform where clients can easily find and connect with verified Thekedars (contractors) to build their homes. It simplifies project management.",
+    tags: [
+      {
+        name: "React",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Node.js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "MongoDB",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: zevenz_builder,
+    source_code_link: "https://www.youtube.com/watch?v=O0vF6-EPRqQ",
   },
 ];
 

@@ -72,8 +72,10 @@ const About = () => {
       </div>
 
       <p ref={paragraphRef} className="mt-4 text-white text-[17px] max-w-3xl leading-[30px]">
-      I'm a skilled software developer with experience in JavaScript, and expertise in frameworks 
-        like React, Node.js, and Three.js. I'm a quick learner and collaborate closely with clients to create efficient, 
+        I'm a skilled software developer with experience in JavaScript and TypeScript, and expertise in frameworks like React, Node.js, and Three.js.
+        As a forward-thinking <span className="text-[#915eff] font-bold">AI Engineer</span>, I specialize in developing 
+        <span className="text-[#915eff] font-bold"> RAG (Retrieval-Augmented Generation)</span> architectures and building intelligent 
+        <span className="text-[#915eff] font-bold"> AI Chatbots</span>. I'm a quick learner and collaborate closely with clients to create efficient, 
         scalable, and user-friendly solutions that solve real-world problems. Let's work together to bring your ideas to life!
       </p>
 

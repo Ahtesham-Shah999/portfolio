@@ -32,6 +32,13 @@ import threejs from "./tech/threejs.svg";
 import firstTestimonial from './Tars Ken.webp';
 import secondTestimonial from './image.webp';
 import thirdTestimonial from './third testimonial.webp'
+import smart_biztrack from "./smart_biztrack.jpg";
+import thekadar from "./thekadar.jpg";
+import devoverflow from "./devoverflow.jpg";
+import restaurant_chatbot from "./restaurant_chatbot.png";
+import crypto_wallet from "./crypto_wallet.jpg";
+import zevenz_builder from "./zevenz_builder.png";
+import restaurant_support from "./restaurant_support.jpg";
 
 export {
   logo,
@@ -66,5 +73,12 @@ export {
   redux,
   tailwind,
   threejs,
-yess,
+  yess,
+  smart_biztrack,
+  thekadar,
+  devoverflow,
+  restaurant_chatbot,
+  crypto_wallet,
+  zevenz_builder,
+  restaurant_support,
 };
