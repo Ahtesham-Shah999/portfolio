@@ -30,6 +30,12 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
 import docker from "./tech/docker.png";
+import typescript from "./tech/typescript.png";
+import postgresql from "./tech/postgresql.png";
+import python from "./tech/python.svg";
+import nextjs from "./tech/nextjs.svg";
+import angular from "./tech/angular.svg";
+import firebase from "./tech/firebase.svg";
 import firstTestimonial from './Tars Ken.webp';
 import secondTestimonial from './image.webp';
 import thirdTestimonial from './third testimonial.webp'
@@ -68,5 +74,11 @@ export {
   tailwind,
   threejs,
   docker,
+  typescript,
+  postgresql,
+  python,
+  nextjs,
+  angular,
+  firebase,
   yess,
 };

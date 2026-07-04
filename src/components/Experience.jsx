@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionWrapper } from "../hoc";
 import { useTheme } from "../context/ThemeContext";
 import { experiences } from "../constants";
+import { motion, AnimatePresence } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,36 +113,48 @@ const Experience = () => {
         </div>
 
         {/* Details */}
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold" style={{ color: theme.text }}>
-            {currentExp.title}{" "}
-            <span style={{ color: theme.accent }}>
-              @{" "}
-              {currentExp.company_url ? (
-                <a
-                  href={currentExp.company_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                  style={{ color: theme.accent }}
-                >
-                  {currentExp.company_name}
-                </a>
-              ) : (
-                currentExp.company_name
-              )}
-            </span>
-          </h3>
-          <p className="font-mono text-xs mt-1 mb-6" style={{ color: theme.textSecondary }}>
-            {currentExp.date}
-          </p>
-          <ul className="triangle-list">
-            {currentExp.points.map((point, index) => (
-              <li key={index} className="mb-3 text-sm leading-[1.6]">
-                {point}
-              </li>
-            ))}
-          </ul>
+        <div className="flex-1 overflow-hidden min-h-[300px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <h3 className="text-xl font-semibold" style={{ color: theme.text }}>
+                {currentExp.title}{" "}
+                <span style={{ color: theme.accent }}>
+                  @{" "}
+                  {currentExp.company_url ? (
+                    <a
+                      href={currentExp.company_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline"
+                      style={{ color: theme.accent }}
+                    >
+                      {currentExp.company_name}
+                    </a>
+                  ) : (
+                    currentExp.company_name
+                  )}
+                </span>
+              </h3>
+              <p className="font-mono text-xs mt-1 mb-6" style={{ color: theme.textSecondary }}>
+                {currentExp.date}
+              </p>
+              <ul className="triangle-list">
+                {currentExp.points.map((point, index) => (
+                  <li 
+                    key={index} 
+                    className="mb-3 text-sm leading-[1.6]"
+                    dangerouslySetInnerHTML={{ __html: point }}
+                  />
+                ))}
+              </ul>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </div>

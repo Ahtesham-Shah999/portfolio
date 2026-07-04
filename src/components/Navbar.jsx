@@ -14,6 +14,7 @@ const Navbar = () => {
   const [showResume, setShowResume] = useState(false);
   const { theme, themeName, setThemeName, themes, themeList } = useTheme();
   const themeRef = useRef(null);
+  const mobileThemeRef = useRef(null);
   const resumeRef = useRef(null);
 
   useEffect(() => {
@@ -27,8 +28,15 @@ const Navbar = () => {
   // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (themeRef.current && !themeRef.current.contains(e.target)) setShowThemes(false);
-      if (resumeRef.current && !resumeRef.current.contains(e.target)) setShowResume(false);
+      if (
+        (themeRef.current && !themeRef.current.contains(e.target)) &&
+        (mobileThemeRef.current && !mobileThemeRef.current.contains(e.target))
+      ) {
+        setShowThemes(false);
+      }
+      if (resumeRef.current && !resumeRef.current.contains(e.target)) {
+        setShowResume(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -189,6 +197,71 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="sm:hidden flex items-center gap-3">
+          {/* Mobile Theme Switcher */}
+          <div className="relative" ref={mobileThemeRef}>
+            <button
+              onClick={() => {
+                setShowThemes(!showThemes);
+                setShowResume(false);
+              }}
+              className="p-2 rounded-lg border dynamic-border-hover"
+              style={{
+                borderColor: theme.border,
+                color: theme.text,
+                backgroundColor: showThemes ? theme.accentMuted : "transparent",
+              }}
+            >
+              <MdPalette size={18} />
+            </button>
+            {showThemes && (
+              <div className="theme-panel right-0" style={{ right: 0, minWidth: "150px" }}>
+                <p className="text-xs font-mono mb-3 px-3 pt-1" style={{ color: theme.textSecondary }}>
+                  Dark Themes
+                </p>
+                {darkThemes.map((t) => (
+                  <div
+                    key={t}
+                    className={`theme-swatch ${themeName === t ? "active" : ""}`}
+                    onClick={() => {
+                      setThemeName(t);
+                      setShowThemes(false);
+                    }}
+                  >
+                    <div
+                      className="swatch-color"
+                      style={{ backgroundColor: themes[t].accent }}
+                    />
+                    <span className="text-xs" style={{ color: theme.text }}>
+                      {t}
+                    </span>
+                  </div>
+                ))}
+                <div className="my-2 border-t" style={{ borderColor: theme.border }} />
+                <p className="text-xs font-mono mb-3 px-3" style={{ color: theme.textSecondary }}>
+                  Light Themes
+                </p>
+                {lightThemes.map((t) => (
+                  <div
+                    key={t}
+                    className={`theme-swatch ${themeName === t ? "active" : ""}`}
+                    onClick={() => {
+                      setThemeName(t);
+                      setShowThemes(false);
+                    }}
+                  >
+                    <div
+                      className="swatch-color"
+                      style={{ backgroundColor: themes[t].accent }}
+                    />
+                    <span className="text-xs" style={{ color: theme.text }}>
+                      {t}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
           <button
             onClick={() => setToggle(!toggle)}
             className="p-2"

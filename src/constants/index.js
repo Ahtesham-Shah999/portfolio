@@ -33,6 +33,12 @@ import {
   secondTestimonial,
   thirdTestimonial,
   docker,
+  typescript,
+  postgresql,
+  python,
+  nextjs,
+  angular,
+  firebase,
 } from '../assets'
 
 // Import companies
@@ -86,6 +92,7 @@ const technologies = [
   { name: "HTML 5", icon: html },
   { name: "CSS 3", icon: css },
   { name: "JavaScript", icon: javascript },
+  { name: "TypeScript", icon: typescript },
   { name: "React JS", icon: reactjs },
   { name: "GSAP", icon: gsap },
   { name: "Framer Motion", icon: framer },
@@ -99,16 +106,21 @@ const technologies = [
   { name: "AWS", icon: aws },
   { name: "MongoDB", icon: mongodb },
   { name: "MySQL", icon: mysql },
+  { name: "PostgreSQL", icon: postgresql },
   { name: "Git", icon: git },
   { name: "Docker", icon: docker },
+  { name: "Python", icon: python },
+  { name: "Next.js", icon: nextjs },
+  { name: "Angular", icon: angular },
+  { name: "Firebase", icon: firebase },
 ];
 
 // About section tech stacks
 const aboutTechStacks = {
-  languages: ["JavaScript (ES6+)", "TypeScript", "Python", "Java", "C++", "SQL"],
-  frameworks: ["React.js", "Next.js", "Node.js", "Express.js", "FastAPI", "NestJS"],
-  tools: ["Git", "Docker", "AWS", "GCP", "Jenkins", "n8n"],
-  databases: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Supabase"],
+  languages: ["JavaScript/TypeScript", "Python", "Java", "C++", "C#", "SQL"],
+  frameworks: ["React.js & Next.js", "Angular", "Node.js & Express.js", "FastAPI & NestJS", "ASP.NET Core & Go", "Tailwind & Redux"],
+  tools: ["AWS, GCP & Azure", "Docker & CI/CD", "LLM Integration & RAG", "Generative AI & Agents", "Jest & Pytest", "Agile & Git Flow"],
+  databases: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Firebase", "Supabase"],
 };
 
 const experiences = [
@@ -120,10 +132,10 @@ const experiences = [
     iconBg: "#383E56",
     date: "Oct 2025 - Mar 2026",
     points: [
-      "Designed and deployed 3 production LLM-integrated AI agent workflows using Python and FastAPI, reducing manual processing time by 60%.",
-      "Engineered prompt pipelines for GPT-4 and Gemini APIs using chain-of-thought, few-shot, and ReAct techniques, improving structured output accuracy by 35%.",
-      "Architected a RAG pattern using vector embeddings and semantic search to ground LLM responses in domain-specific knowledge.",
-      "Orchestrated multi-step AI workflows with n8n, saving 8+ hrs/week; took full ownership of backend API design and deployment within a 3-person startup.",
+      "Designed and deployed 3 production <b>LLM-integrated AI agent</b> workflows using <b>Python</b> and <b>FastAPI</b>, reducing manual processing time by 60%.",
+      "Engineered prompt pipelines for <b>GPT-4</b> and <b>Gemini APIs</b> using <b>chain-of-thought</b>, <b>few-shot</b>, and <b>ReAct</b> techniques, improving structured output accuracy by 35%.",
+      "Architected a <b>RAG</b> pattern using <b>vector embeddings</b> and <b>semantic search</b> to ground LLM responses in domain-specific knowledge.",
+      "Orchestrated multi-step AI workflows with <b>n8n</b>, saving 8+ hrs/week; took full ownership of backend API design and deployment within a 3-person startup.",
     ],
   },
   {
@@ -134,10 +146,10 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "Jun 2025 - Aug 2025",
     points: [
-      "Architected and shipped 5+ full-stack features in React.js and Node.js, reducing frontend load time by 30% via code splitting, lazy loading, and bundle optimization.",
-      "Implemented reusable TypeScript component library cutting UI dev time by 20%.",
-      "Designed RESTful APIs consumed by 3 client-facing web apps, improving data retrieval latency by 25% via response caching and query optimization.",
-      "Collaborated in a 6-person Agile team using Git Flow, PR reviews, and sprint planning; maintained 95%+ sprint velocity across all milestones.",
+      "Architected and shipped 5+ full-stack features in <b>React.js</b> and <b>Node.js</b>, reducing frontend load time by 30% via code splitting, lazy loading, and bundle optimization.",
+      "Implemented reusable <b>TypeScript</b> component library cutting UI dev time by 20%.",
+      "Designed <b>RESTful APIs</b> consumed by 3 client-facing web apps, improving data retrieval latency by 25% via response caching and query optimization.",
+      "Collaborated in a 6-person <b>Agile</b> team using <b>Git Flow</b>, <b>PR reviews</b>, and <b>sprint planning</b>; maintained 95%+ sprint velocity across all milestones.",
     ],
   },
   {
@@ -148,10 +160,10 @@ const experiences = [
     iconBg: "#383E56",
     date: "Jun 2025 - Aug 2025",
     points: [
-      "Developed and maintained 10+ RESTful API endpoints in Node.js and Express.js supporting high-availability workflows for multiple production clients.",
-      "Optimized PostgreSQL queries via composite indexing, query restructuring, and connection pooling, reducing execution time by 40% and enabling 3× higher concurrent load.",
-      "Implemented JWT authentication middleware and RBAC, hardening API security.",
-      "Authored Jest unit and integration tests achieving 80%+ coverage; integrated into CI/CD via Jenkins.",
+      "Developed and maintained 10+ <b>RESTful API</b> endpoints in <b>Node.js</b> and <b>Express.js</b> supporting high-availability workflows for multiple production clients.",
+      "Optimized <b>PostgreSQL</b> queries via composite indexing, query restructuring, and connection pooling, reducing execution time by 40% and enabling 3× higher concurrent load.",
+      "Implemented <b>JWT authentication</b> middleware and <b>RBAC</b>, hardening API security.",
+      "Authored <b>Jest</b> unit and integration tests achieving 80%+ coverage; integrated into <b>CI/CD</b> via <b>Jenkins</b>.",
     ],
   },
 ];
