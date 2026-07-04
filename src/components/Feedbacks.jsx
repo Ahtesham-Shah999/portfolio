@@ -1,67 +1,73 @@
-import React, { useEffect } from "react";
-import { gsap } from "gsap";
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
+import { useTheme } from "../context/ThemeContext";
 import { testimonials } from "../constants";
+import { FiMessageCircle } from "react-icons/fi";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const FeedbackCard = ({ index, testimonial, name, designation, company, image }) => {
-  // Use a `ref` to apply GSAP animations
-  const cardRef = React.useRef(null);
+const FeedbackCard = ({ testimonial, name, designation, company, image, index }) => {
+  const { theme } = useTheme();
+  const cardRef = useRef(null);
 
   useEffect(() => {
-    const el = cardRef.current;
-
-    // Add the ScrollTrigger animation with GSAP
     gsap.fromTo(
-      el,
-      {
-        opacity: 0,
-        y: 100, // Initial position off-screen
-      },
+      cardRef.current,
+      { opacity: 0, y: 40 },
       {
         opacity: 1,
         y: 0,
+        duration: 0.6,
+        delay: index * 0.15,
+        ease: "power2.out",
         scrollTrigger: {
-          trigger: el,
-          start: "top bottom", // Trigger when the top of the element reaches the bottom of the viewport
-          end: "top center",   // End the animation when the top reaches the center
-          scrub: true,         // Link the animation progress to the scroll position
-          markers: false,      // Set to true if you want to see the markers for debugging
+          trigger: cardRef.current,
+          start: "top 90%",
+          toggleActions: "play none none reverse",
         },
       }
     );
-  }, []);
+  }, [index]);
 
   return (
     <div
       ref={cardRef}
-      className="bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full"
+      className="p-8 rounded-xl transition-all duration-300"
+      style={{
+        backgroundColor: theme.bgCard,
+        border: `1px solid ${theme.border}`,
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = theme.accent;
+        e.currentTarget.style.transform = "translateY(-5px)";
+        e.currentTarget.style.boxShadow = "0 10px 40px rgba(0,0,0,0.2)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = theme.border;
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "none";
+      }}
     >
-      <p className="text-red-600 font-black text-[48px]">"</p>
-
-      <div className="mt-1">
-        <p className="text-white tracking-wider text-[18px]">{testimonial}</p>
-
-        <div className="mt-7 flex justify-between items-center gap-1">
-          <div className="flex-1 flex flex-col">
-            <p className="text-white font-medium text-[16px]">
-              <span className="blue-text-gradient">@</span> {name}
-            </p>
-            <p className="mt-1 text-secondary text-[12px]">
-              {designation} of {company}
-            </p>
-          </div>
-
-          <img
-            src={image}
-            alt={`feedback_by-${name}`}
-            className="w-10 h-10 rounded-full object-cover"
-          />
+      <FiMessageCircle size={28} className="mb-4" style={{ color: theme.accent }} />
+      <p className="text-sm leading-[1.7] mb-6" style={{ color: theme.textSecondary }}>
+        "{testimonial}"
+      </p>
+      <div className="flex items-center gap-3">
+        <img
+          src={image}
+          alt={name}
+          className="w-10 h-10 rounded-full object-cover"
+          style={{ border: `2px solid ${theme.accent}` }}
+        />
+        <div>
+          <p className="text-sm font-semibold" style={{ color: theme.text }}>
+            {name}
+          </p>
+          <p className="text-xs font-mono" style={{ color: theme.textSecondary }}>
+            {designation} @ {company}
+          </p>
         </div>
       </div>
     </div>
@@ -69,17 +75,43 @@ const FeedbackCard = ({ index, testimonial, name, designation, company, image })
 };
 
 const Feedbacks = () => {
+  const { theme } = useTheme();
+  const headingRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, x: -30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className={`mt-12 bg-black-100 rounded-[20px]`}>
-      <div className={`bg-tertiary rounded-2xl ${styles.padding} min-h-[300px]`}>
-        <div>
-          <p className={styles.sectionSubText} style={{color:"red"}}>What others say</p>
-          <h2 className={styles.sectionHeadText}>Testimonials.</h2>
-        </div>
+    <div ref={sectionRef}>
+      {/* Section Heading */}
+      <div ref={headingRef} className="flex items-center gap-2 mb-10">
+        <h2 className="flex items-center gap-3 whitespace-nowrap" style={{ color: theme.text }}>
+          <span className="text-[28px] sm:text-[32px] font-bold">Testimonials</span>
+        </h2>
+        <div className="section-line" />
       </div>
-      <div
-        className={`-mt-20 pb-14 ${styles.paddingX} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10  justify-items-center`}
-      >
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {testimonials.map((testimonial, index) => (
           <FeedbackCard key={testimonial.name} index={index} {...testimonial} />
         ))}

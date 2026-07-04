@@ -29,6 +29,7 @@ import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
+import docker from "./tech/docker.png";
 import firstTestimonial from './Tars Ken.webp';
 import secondTestimonial from './image.webp';
 import thirdTestimonial from './third testimonial.webp'
@@ -66,5 +67,6 @@ export {
   redux,
   tailwind,
   threejs,
-yess,
+  docker,
+  yess,
 };

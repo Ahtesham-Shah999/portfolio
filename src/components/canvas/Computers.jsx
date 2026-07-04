@@ -39,9 +39,9 @@ const Computers = () => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={0.35}
-        position={[7, -3, -2.5]}
-        rotation={[0, -0.6, -0.1]}
+        scale={0.65}
+        position={[0, -2.5, -1.5]}
+        rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
   );
@@ -73,9 +73,10 @@ const ComputersCanvas = () => {
         camera={{ position: [20, 3, 5], fov: 25 }}
         gl={{ preserveDrawingBuffer: true }}
       >
-        <Suspense fallback={<CanvasLoader />}>
+        <Suspense fallback={null}>
           <OrbitControls
             enableZoom={false}
+            enablePan={false}
             maxPolarAngle={Math.PI / 2}
             minPolarAngle={Math.PI / 2}
           />

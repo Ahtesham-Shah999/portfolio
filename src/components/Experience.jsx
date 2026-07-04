@@ -1,84 +1,151 @@
-import React from "react";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
-
-import "react-vertical-timeline-component/style.min.css";
-
-import { styles } from "../styles";
-import { experiences } from "../constants";
+import React, { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionWrapper } from "../hoc";
-import { textVariant } from "../utils/motion";
-import zevenz from "../assets/zevenz.png"
-const ExperienceCard = ({ experience }) => {
-  return (
-    <VerticalTimelineElement
-  contentStyle={{
-    background: "rgba(0, 0, 0, 0)", // Keep dark background for the content
-    color: "#fff", // Keep text color as white
-  }}
-  contentArrowStyle={{ borderRight: "7px solid #FF7F7F" }} // Red arrow
-  date={experience.date}
-  icon={
-    <div className="flex justify-center items-center w-full h-full ">
-      <img
-        src={zevenz}
-        alt={experience.company_name}
-        className="w-[90%] h-[90%] object-contain rounded-3xl"
-      />
-    </div>
-  }
->
-  <div>
-    <h3 className="text-red-600 text-[24px] font-bold">{experience.title}</h3> {/* Red for title */}
-    <p className="text-white text-[16px] font-semibold" style={{ margin: 0 }}>
-      Zevenz
-    </p>
-  </div>
+import { useTheme } from "../context/ThemeContext";
+import { experiences } from "../constants";
 
-  <ul className="mt-5 list-disc ml-5 space-y-2">
-    {experience.points.map((point, index) => (
-      <li
-        key={`experience-point-${index}`}
-        className="text-white text-[14px] pl-1 tracking-wider" // Keep white for points
-      >
-        {point}
-      </li>
-    ))}
-  </ul>
-</VerticalTimelineElement>
-
-  );
-};
+gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
+  const { theme } = useTheme();
+  const [activeTab, setActiveTab] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const headingRef = useRef(null);
+  const contentRef = useRef(null);
+  const sectionRef = useRef(null);
+  const tabHeight = 42;
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, x: -30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        contentRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    let intervalId;
+    if (autoPlay) {
+      intervalId = setInterval(() => {
+        setActiveTab((prev) => (prev + 1) % experiences.length);
+      }, 3000);
+    }
+    return () => clearInterval(intervalId);
+  }, [autoPlay, experiences.length]);
+
+  const currentExp = experiences[activeTab];
+
   return (
-    <>
-      <motion.div variants={textVariant()}>
-  <p className={`${styles.sectionSubText} text-[#FF7F7F] text-center`}>
-    What I have done so far
-  </p>
-  <h2 className={`${styles.sectionHeadText} text-white text-center`}>
-    Work Experience.
-  </h2>
-</motion.div>
+    <div ref={sectionRef}>
+      {/* Section Heading */}
+      <div ref={headingRef} className="flex items-center gap-2 mb-10">
+        <h2 className="flex items-center gap-3 whitespace-nowrap" style={{ color: theme.text }}>
+          <span className="font-mono text-base" style={{ color: theme.accent }}>
+            02.
+          </span>
+          <span className="text-[28px] sm:text-[32px] font-bold">Where I've Worked</span>
+        </h2>
+        <div className="section-line" />
+      </div>
 
+      {/* Experience Content */}
+      <div ref={contentRef} className="flex flex-col md:flex-row gap-8 max-w-3xl">
+        {/* Tabs */}
+        <div className="exp-tabs relative flex md:flex-col overflow-x-auto md:overflow-x-visible">
+          {experiences.map((exp, index) => (
+            <button
+              key={index}
+              className={`exp-tab ${activeTab === index ? "active" : ""}`}
+              onClick={() => {
+                setActiveTab(index);
+                setAutoPlay(false);
+              }}
+              style={{
+                color: activeTab === index ? theme.accent : theme.textSecondary,
+                backgroundColor: activeTab === index ? theme.accentMuted : "transparent",
+              }}
+            >
+              {exp.company_name}
+            </button>
+          ))}
+          {/* Active tab slider */}
+          <div
+            className="exp-tab-slider hidden md:block"
+            style={{
+              top: activeTab * tabHeight + "px",
+              height: tabHeight + "px",
+              backgroundColor: theme.accent,
+            }}
+          />
+        </div>
 
-      <div className='mt-20 flex flex-col'>
-  <VerticalTimeline>
-    {experiences.map((experience, index) => (
-      <ExperienceCard
-        key={`experience-${index}`}
-        experience={experience}
-      />
-    ))}
-  </VerticalTimeline>
-</div>
-
-    </>
+        {/* Details */}
+        <div className="flex-1">
+          <h3 className="text-xl font-semibold" style={{ color: theme.text }}>
+            {currentExp.title}{" "}
+            <span style={{ color: theme.accent }}>
+              @{" "}
+              {currentExp.company_url ? (
+                <a
+                  href={currentExp.company_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                  style={{ color: theme.accent }}
+                >
+                  {currentExp.company_name}
+                </a>
+              ) : (
+                currentExp.company_name
+              )}
+            </span>
+          </h3>
+          <p className="font-mono text-xs mt-1 mb-6" style={{ color: theme.textSecondary }}>
+            {currentExp.date}
+          </p>
+          <ul className="triangle-list">
+            {currentExp.points.map((point, index) => (
+              <li key={index} className="mb-3 text-sm leading-[1.6]">
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default SectionWrapper(Experience, "work");
+export default SectionWrapper(Experience, "experience");
