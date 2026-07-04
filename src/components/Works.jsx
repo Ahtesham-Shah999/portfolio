@@ -12,6 +12,8 @@ const FeaturedProjectCard = ({ project, index }) => {
   const { theme } = useTheme();
   const cardRef = useRef(null);
   const isEven = index % 2 === 0;
+  const images = project.images && project.images.length > 0 ? project.images : [project.image];
+  const [currentImg, setCurrentImg] = useState(0);
 
   useEffect(() => {
     gsap.fromTo(
@@ -31,12 +33,21 @@ const FeaturedProjectCard = ({ project, index }) => {
     );
   }, []);
 
+  // Auto-slide images
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentImg((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <div
       ref={cardRef}
       className="relative grid grid-cols-1 lg:grid-cols-12 gap-3 items-center mb-20 lg:mb-24"
     >
-      {/* Image */}
+      {/* Image Carousel */}
       <div
         className={`lg:col-span-7 ${isEven ? "lg:col-start-1" : "lg:col-start-6"} row-start-1`}
         style={{ gridRow: 1 }}
@@ -47,18 +58,39 @@ const FeaturedProjectCard = ({ project, index }) => {
           rel="noopener noreferrer"
           className="block relative rounded-lg overflow-hidden group"
         >
-          <div
-            className="absolute inset-0 z-10 transition-all duration-300"
-            style={{ backgroundColor: `${theme.accent}15` }}
-          />
-          <img
-            src={project.image}
-            alt={project.name}
-            className="w-full h-[300px] sm:h-[360px] object-cover object-left rounded-lg transition-all duration-500 group-hover:scale-105"
-            style={{ filter: "grayscale(20%) brightness(0.85)" }}
-            onMouseEnter={(e) => (e.target.style.filter = "grayscale(0%) brightness(1)")}
-            onMouseLeave={(e) => (e.target.style.filter = "grayscale(20%) brightness(0.85)")}
-          />
+          <div className="relative w-full h-[300px] sm:h-[360px]">
+            {images.map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                alt={`${project.name} screenshot ${i + 1}`}
+                className="absolute inset-0 w-full h-full object-cover object-left rounded-lg transition-all duration-700 ease-in-out group-hover:scale-105"
+                style={{
+                  opacity: currentImg === i ? 1 : 0,
+                }}
+              />
+            ))}
+          </div>
+          {/* Dot indicators */}
+          {images.length > 1 && (
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentImg(i);
+                  }}
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: currentImg === i ? 20 : 8,
+                    height: 8,
+                    backgroundColor: currentImg === i ? theme.accent : "rgba(255,255,255,0.5)",
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </a>
       </div>
 

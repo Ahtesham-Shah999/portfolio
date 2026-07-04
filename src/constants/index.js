@@ -41,6 +41,8 @@ import {
   firebase,
 } from '../assets'
 
+import { stratifyImages, zevenzImages } from '../assets/projects'
+
 // Import companies
 import tekisky from "../assets/company/tekisky.png";
 import starbucks from "../assets/company/starbucks.png";
@@ -202,6 +204,7 @@ const featuredProjects = [
     description: "Built full MEAN-stack SaaS from scratch; integrated Gemini Flash API with custom prompt pipelines parsing natural language into structured JSON trading logic at 90%+ accuracy. Deployed backtesting engine on 2+ years of historical market data. Implemented JWT auth, RBAC, and rate limiting; deployed on GCP.",
     tags: ["Next.js", "Node.js", "Express.js", "MongoDB", "Python", "Gemini API"],
     image: project2,
+    images: stratifyImages,
     github: "https://github.com/Ahtesham-Shah999/Stratify-Ultimate-AI-Powered-Saas.git",
     live: null,
     category: "AI & Machine Learning",
@@ -212,6 +215,7 @@ const featuredProjects = [
     description: "Built end-to-end MERN marketplace with project bidding, proposal management, and contractor verification. Implemented Socket.io real-time messaging at sub-200ms latency and automated 100+ daily transactional emails via Nodemailer.",
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Socket.io"],
     image: gearXpert,
+    images: zevenzImages,
     github: "https://github.com/Ahtesham-Shah999/Zevens_Builders",
     live: null,
     youtube: "https://www.youtube.com/watch?v=O0vF6-EPRqQ",
