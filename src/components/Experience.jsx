@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Experience = () => {
   const { theme } = useTheme();
   const [activeTab, setActiveTab] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const headingRef = useRef(null);
   const contentRef = useRef(null);
   const sectionRef = useRef(null);
@@ -58,13 +58,13 @@ const Experience = () => {
 
   useEffect(() => {
     let intervalId;
-    if (autoPlay) {
+    if (isHovered) {
       intervalId = setInterval(() => {
         setActiveTab((prev) => (prev + 1) % experiences.length);
       }, 3000);
     }
     return () => clearInterval(intervalId);
-  }, [autoPlay, experiences.length]);
+  }, [isHovered, experiences.length]);
 
   const currentExp = experiences[activeTab];
 
@@ -82,7 +82,7 @@ const Experience = () => {
       </div>
 
       {/* Experience Content */}
-      <div ref={contentRef} className="flex flex-col md:flex-row gap-8 max-w-3xl">
+      <div ref={contentRef} className="flex flex-col md:flex-row gap-8 max-w-3xl" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         {/* Tabs */}
         <div className="exp-tabs relative flex md:flex-col overflow-x-auto md:overflow-x-visible">
           {experiences.map((exp, index) => (
@@ -91,7 +91,6 @@ const Experience = () => {
               className={`exp-tab ${activeTab === index ? "active" : ""}`}
               onClick={() => {
                 setActiveTab(index);
-                setAutoPlay(false);
               }}
               style={{
                 color: activeTab === index ? theme.accent : theme.textSecondary,

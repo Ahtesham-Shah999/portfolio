@@ -14,6 +14,7 @@ const FeaturedProjectCard = ({ project, index }) => {
   const isEven = index % 2 === 0;
   const images = project.images && project.images.length > 0 ? project.images : [project.image];
   const [currentImg, setCurrentImg] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     gsap.fromTo(
@@ -33,14 +34,14 @@ const FeaturedProjectCard = ({ project, index }) => {
     );
   }, []);
 
-  // Auto-slide images
+  // Auto-slide images ONLY on hover
   useEffect(() => {
-    if (images.length <= 1) return;
+    if (images.length <= 1 || !isHovered) return;
     const interval = setInterval(() => {
       setCurrentImg((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 2500);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length, isHovered]);
 
   return (
     <div
@@ -51,6 +52,8 @@ const FeaturedProjectCard = ({ project, index }) => {
       <div
         className={`lg:col-span-7 ${isEven ? "lg:col-start-1" : "lg:col-start-6"} row-start-1`}
         style={{ gridRow: 1 }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <a
           href={project.github}
